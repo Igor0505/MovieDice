@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import * as Utils from '../utils';
 import MovieDetail from './MovieDetail';
 import GenresList from './GenresList'
+import MovieTitle from './MovieTitle'
 
 /*
 adult: false
@@ -107,30 +108,33 @@ class Movie extends Component {
                 <div>
                     <div className="card hoverable blue-grey lighten-5">
 
-                        <div className="card-content ">
-                            <span className="card-title">{moviedata.block_title}
-                                <span className={vote_average_color + " new badge black-text"} data-badge-caption="">{!moviedata.vote_average ? "N/A" : moviedata.vote_average}</span>
+                        <div className="card-content" style={{ padding: "10px", minHeight: "420px" }}>
+                            <span className="card-title" style={{ fontSize: "1rem" }}>{moviedata.block_title}
+                                <span className={vote_average_color + " new badge black-text z-depth-1"} data-badge-caption="" style={{ fontSize: "1.2rem", height: "1.8rem", paddingTop: "3px" }}>
+                                    {!moviedata.vote_average ? "N/A" : moviedata.vote_average}
+                                </span>
                             </span>
 
-                            <div className="row">
-                                <div className="col s12 m3">
-                                    <img src={poster_path} style={{ maxWidth: "100%", height: "auto", border: "1px solid #cecece", borderRadius: "5px" }} />
+                            <div className="row" style={{ padding: "0", marginBottom: "0" }}>
+                                <div className="col s12 m12" >
+                                    <img src={poster_path} style={{ width: "100%", height: "auto", border: "1px solid #cecece", borderRadius: "5px" }} />
                                 </div>
-                                <div className="col s12 m9">
+                                {/* <div className="col s12 m9">
+                                style={{ padding: "0", margin: "0" }}
+                                marginLeft: "-10px", marginRight: "-10px"
                                     <GenresList genres={moviedata.genres} />
                                     <div style={{ textAlign: 'justify!important' }}>{moviedata.overview}</div>
                                     <p>Дата релиза: <b>{releaseDate.toLocaleDateString("ru")} г.</b></p>
                                     {(moviedata.runtime !== 0) && <p>Продолжительность: <b>{moviedata.runtime} мин.</b></p>}
                                     {(moviedata.budget !== 0) && <p>Бюджет: <b>{this.fine_budget(moviedata.budget)} $</b></p>}
                                     {(moviedata.tagline !== '') && <p>Ключевая фраза: <b>{moviedata.tagline}</b></p>}
-
-                                </div>
+                                </div> */}
                             </div>
-                            <h5 className="red-text text-lighten-3">{moviedata.title}</h5>
+                            <MovieTitle moviedata={moviedata} />
 
                         </div>
                         <div className="card-action">
-                            <button data-target={"modal" + id} className="btn modal-trigger">Детали</button>
+                            <button data-target={"modal" + id} className="btn modal-trigger waves-effect waves-light btn-small">подробнее</button>
                         </div>
 
                     </div >

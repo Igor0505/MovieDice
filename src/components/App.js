@@ -23,8 +23,8 @@ class App extends Component {
         const { showPref } = this
         return (
             <div className="App">
-                <PreferencesButton visible={pref_visible} onShowPref={showPref} />
                 {pref_visible || <MovieList />}
+                <PreferencesButton visible={pref_visible} onShowPref={showPref} />
             </div>
         );
     }

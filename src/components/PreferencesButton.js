@@ -7,7 +7,7 @@ const PreferencesButton = ({ visible = false, onShowPref = f => f }) =>
         <Preferences onShowPref={onShowPref} /> :
         <div className="row">
             <div className="col s12">
-                <button className="btn" onClick={() => onShowPref(true)}>Настройки</button>
+                <button className="btn waves-effect waves-light btn-small yellow darken-4" onClick={() => onShowPref(true)}>Настройки</button>
             </div>
         </div>
 

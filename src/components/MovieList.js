@@ -147,13 +147,13 @@ class MovieList extends Component {
 
         return (
             <div>
-                {this.state.data.map((moviedata, id) =>
-                    <div className="row" key={id}>
-                        <div className="col s12">
+                <div className="row" >
+                    {this.state.data.map((moviedata, id) =>
+                        <div key={id} className="col s12 m3">
                             <Movie moviedata={moviedata} id={id} />
                         </div>
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
 
         );

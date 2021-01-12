@@ -13,7 +13,7 @@ class MovieDetail extends Component {
     }
 
     componentDidMount() {
-        let options = {}
+        const options = { startingTop: '4%', endingTop: '10%' }
 
         const modal = this.modalRef.current;
         // console.log(modal)
@@ -59,7 +59,7 @@ class MovieDetail extends Component {
 
                 </div>
                 <div className="modal-footer">
-                    <a href="#!" className="modal-close waves-effect waves-green btn-flat">Хорошо</a>
+                    {/* <a href="#!" className="modal-close waves-effect waves-green btn-flat">Хорошо</a> */}
                 </div>
             </div>
         );

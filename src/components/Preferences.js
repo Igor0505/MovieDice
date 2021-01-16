@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import * as Utils from '../utils';
 import CheckboxList from "./CheckboxList"
 import SelectGenre from "./SelectGenre"
 import SelectActor from "./SelectActor"
+import LoginButton from './LoginButton'
 
 class Preferences extends Component {
     constructor(props) {
@@ -40,15 +42,16 @@ class Preferences extends Component {
                 <div className="row">
                     <div className="col s12">
                         <div className="card-panel">
-                            <span className="center-align">
+                            <h5 className="center-align">
                                 Настройки приложения
-                    </span>
+                            </h5>
                         </div>
                     </div>
                 </div>
 
                 <div className="row">
                     <div className="col s12 m6" >
+                        <LoginButton />
                         <CheckboxList onChangePref={onChangePref} />
                     </div>
 
@@ -61,7 +64,9 @@ class Preferences extends Component {
 
                 <div className="row">
                     <div className="col s12">
-                        <button className="btn" onClick={() => onShowPref(false)}>Закрыть</button>
+                        <button className="btn" onClick={() => onShowPref(false)}>
+                            <FontAwesomeIcon icon="times" /> Закрыть
+                        </button>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,5 @@
 ﻿var apikey = "fce8c64665370700a455613619633eea"
 var themoviedburl = "https://api.themoviedb.org/3/"
-// https://api.themoviedb.org/3/movie/76341?language=ru-RU&api_key=fce8c64665370700a455613619633eea
 
 const movieUrls = [
     { title: "Идет сейчас", url: "movie/now_playing", name: "now_playing" },
@@ -30,6 +29,10 @@ function setToStorage(key, value) {
     localStorage.setItem(key, value)
 }
 
+function deleteFromStorage(key) {
+    localStorage.removeItem(key)
+}
+
 
 
 function buildUrl(url, page = 1, addition = "") {
@@ -48,18 +51,89 @@ async function getData(url, page = 1, addition = "") {
     return { result: "Ошибка HTTP: " + response.status }
 }
 
+async function createRequestToken() {
+    let response = await fetch(themoviedburl + "authentication/token/new?api_key=" + apikey)
+    if (response.ok) {
+        let answer = await response.json()
+        // console.log('createRequestToken', answer);
+        return answer
+    }
 
-var session_id;
-// getFromStorageSync("session_id").then(function (sync_session) { session_id = sync_session.session_id; });
+    return { result: "Ошибка HTTP: " + response.status }
+}
+
+async function createSession(req_token) {
+    const data = {
+        request_token: req_token
+    }
+    console.log('data', data)
+    let response = await fetch(themoviedburl + "authentication/session/new?api_key=" + apikey, {
+        method: 'POST',
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrerPolicy: 'no-referrer', // no-referrer, *client
+        body: JSON.stringify(data)
+    })
+    if (response.ok) {
+        let answer = await response.json()
+        // console.log('createSession', answer);
+        return answer
+    }
+
+    // console.log('response', response)
+    return { result: "Ошибка HTTP: " + response.status }
+}
+
+async function getAccount(session_id) {
+    let response = await fetch(themoviedburl + "account?api_key=" + apikey + "&session_id=" + session_id)
+    if (response.ok) {
+        let answer = await response.json()
+        console.log('getAccount', answer);
+        return answer
+    }
+
+    return { result: "Ошибка HTTP: " + response.status }
+}
+
+async function addToFavoriteOrWatchlist(session_id, list_type, movie_id, is_add = true) {
+    const data = {
+        media_type: "movie",
+        media_id: movie_id
+    }
+    data[list_type] = is_add
+
+    let response = await fetch(themoviedburl + "account/{account_id}/" + list_type + "?api_key=" + apikey + "&session_id=" + session_id, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(data)
+    })
+    if (response.ok) {
+        let answer = await response.json()
+        return answer
+    }
+
+    return { result: "Ошибка HTTP: " + response.status }
+}
+
 
 export {
     apikey,
     themoviedburl,
     movieUrls,
-    // session_id,
-    // getFromStorageSync,
     getData,
+    createRequestToken,
+    createSession,
+    getAccount,
+    addToFavoriteOrWatchlist,
     buildUrl,
     getFromStorage,
-    setToStorage
+    setToStorage,
+    deleteFromStorage
 }

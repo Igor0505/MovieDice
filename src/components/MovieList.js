@@ -110,13 +110,13 @@ class MovieList extends Component {
             if (block.title === "Выбранный жанр") {
                 const genre_id = Utils.getFromStorage("genre_id");
                 if (genre_id !== null) {
-                    addition = "vote_average.gte=7&with_genres=" + genre_id;
+                    addition = "vote_average.gte=6&with_genres=" + genre_id;
                 }
             }
             else if (block.title === "Выбранный актер") {
                 const actor_id = Utils.getFromStorage("actor_id");
                 if (actor_id != null) {
-                    addition = "vote_average.gte=7&with_cast=" + actor_id;
+                    addition = "vote_average.gte=6&with_cast=" + actor_id;
                 }
             }
 
@@ -162,16 +162,15 @@ class MovieList extends Component {
         }
 
         return (
-            <div>
-                <div className="row" >
-                    {this.state.data.map((moviedata, id) =>
-                        <div key={id} className="col s12 m3">
-                            <Movie moviedata={moviedata} id={id} />
-                        </div>
-                    )}
-                </div>
+            <div style={{
+                display: 'flex',
+                flexFlow: 'row wrap',
+                justifyContent: 'center',
+            }} >
+                {this.state.data.map((moviedata, id) =>
+                    <Movie key={id} moviedata={moviedata} id={id} />
+                )}
             </div>
-
         );
     }
 

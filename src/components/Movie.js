@@ -4,8 +4,7 @@ import * as Utils from '../utils';
 import MovieDetail from './MovieDetail';
 import MovieRate from './MovieRate'
 import MovieImage from './MovieImage'
-// import GenresList from './GenresList'
-// import MovieTitle from './MovieTitle'
+import MovieBlockTitle from './MovieBlockTitle'
 
 class Movie extends Component {
     constructor(props) {
@@ -78,20 +77,12 @@ class Movie extends Component {
             else if (vote_average < 7.0) vote_average_color = 'rgb(242 223 6 / 64%)' // "yellow"
 
             return (
-                <div>
-                    <div className="card hoverable blue-grey lighten-5">
-
-                        <div className="card-content" style={{ padding: "5px", minHeight: "350px" }}>
-                            <MovieRate moviedata={moviedata} vote_average_color={vote_average_color} />
-                            <MovieImage moviedata={moviedata} id={id} />
-                            {/* <MovieTitle moviedata={moviedata} /> */}
-                        </div>
-
-                        {/* <div className="card-action">
-                            <button data-target={"modal" + id} className="btn modal-trigger waves-effect waves-light btn-small">подробнее</button>
-                        </div> */}
-
-                    </div >
+                <div >
+                    <div className="movieimage" data-title={moviedata.title}>
+                        <MovieBlockTitle block_title={moviedata.block_title} />
+                        <MovieRate moviedata={moviedata} vote_average_color={vote_average_color} />
+                        <MovieImage moviedata={moviedata} id={id} />
+                    </div>
                     <MovieDetail moviedata={moviedata} id={id} />
                 </div>
             );

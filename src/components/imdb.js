@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const Imdb = ({ moviedata = null }) =>
-    <a target="_blank" href={'https://www.imdb.com/title/' + moviedata.imdb_id} aria-label="Home" className="z-depth-3">
+    <a target="_blank" href={'https://www.imdb.com/title/' + moviedata.imdb_id} aria-label="Home" >
         <svg id="home_img" className="ipc-logo" xmlns="http://www.w3.org/2000/svg" width="64" height="32" viewBox="0 0 64 32" version="1.1">
             <g fill="#F5C518"><rect x="0" y="0" width="100%" height="100%" rx="4"></rect></g>
             <g transform="translate(8.000000, 7.000000)" fill="#000000" fillRule="nonzero">

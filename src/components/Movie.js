@@ -78,8 +78,8 @@ class Movie extends Component {
 
             return (
                 <div >
-                    <div className="movieimage" data-title={moviedata.title}>
-                        <MovieBlockTitle block_title={moviedata.block_title} />
+                    <div className="movieimageblock" data-title={moviedata.title}>
+                        <MovieBlockTitle block_title={moviedata.block_title} vote_average_color={vote_average_color} />
                         <MovieRate moviedata={moviedata} vote_average_color={vote_average_color} />
                         <MovieImage moviedata={moviedata} id={id} />
                     </div>
@@ -89,9 +89,9 @@ class Movie extends Component {
         }
 
         return (
-            <div className="card blue-grey lighten-5">
-                <div className="card-content">
-                    <h5>{this.state.placeholder}</h5>
+            <div >
+                <div className="movieimageloader" data-title="">
+                    {/* <h5>{this.state.placeholder}</h5> */}
                     <div className="preloader-wrapper big active">
                         <div className="spinner-layer spinner-blue-only">
                             <div className="circle-clipper left">

@@ -12,6 +12,13 @@
 }
 
 .movieimage {
+  width: auto;
+  border: 1px solid #cecece;
+  border-radius: 0px;
+  max-height: 45vh;
+}
+
+.movieimageloader {
   display: inline-block; /* Строчно-блочный элемент */
   position: relative; /* Относительное позиционирование */
   padding-right: 5px;
@@ -19,7 +26,15 @@
   padding-left: 20px;
 }
 
-.movieimage:hover::after {
+.movieimageblock {
+  display: inline-block; /* Строчно-блочный элемент */
+  position: relative; /* Относительное позиционирование */
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-left: 20px;
+}
+
+.movieimageblock:hover::after {
   content: attr(data-title); /* Выводим текст */
   position: absolute; /* Абсолютное позиционирование */
   left: 1px;
@@ -30,10 +45,10 @@
   color: #fff; /* Цвет текста */
   text-align: center; /* Выравнивание текста по центру */
   /* font-family: Arial, sans-serif; Гарнитура шрифта */
-  font-size: 11px; /* Размер текста подсказки */
+  font-size: 14px; /* Размер текста подсказки */
   padding: 5px 10px; /* Поля */
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
   margin-left: 20px;
 }
 
@@ -42,18 +57,22 @@
   transform: rotate(180deg);
 
   position: absolute; /* Абсолютное позиционирование */
-  top: 16px;
-  left: -1px;
+  top: 5px;
+  left: -3px;
   text-align: center;
 
-  background: rgba(61, 62, 63, 1); /* Полупрозрачный цвет фона */
-  color: #fff; /* Цвет текста */
+  background: rgb(27, 27, 27);
+  color: #000; /* Цвет текста */
 
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 
+  height: 100%;
+  max-height: 45vh;
+
+  border: 1px solid #cecece;
   /* width: 0.7em;
   width: 1ch;
   font: Consolas, Monaco, monospace;

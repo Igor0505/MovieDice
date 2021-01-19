@@ -51,7 +51,7 @@ class WatchlistButton extends Component {
             <div style={{ marginBottom: "5px" }}>
                 {(session_id !== null) &&
                     <div>
-                        <button className={"btn " + (watchlist ? "red" : "green")} onClick={() => onAddToList(!watchlist)} style={{ fontSize: "0.7rem" }}>
+                        <button className={"btn " + (watchlist ? "red" : "green")} onClick={() => onAddToList(!watchlist)} style={{ fontSize: "0.6rem" }}>
                             <FontAwesomeIcon icon={watchlist ? "minus-circle" : "plus-circle"} />&nbsp;
                             Отслеживание
                         </button>

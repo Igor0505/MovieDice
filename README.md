@@ -19,3 +19,5 @@ http://localhost:3000/
 ![Экран 1](screenshots/screenshot1.jpg)
 
 ![Экран 2](screenshots/screenshot2.jpg)
+
+![Экран 3](screenshots/screenshot3.jpg)

@@ -51,7 +51,7 @@ class FavoriteButton extends Component {
             <div style={{ marginBottom: "5px" }}>
                 {(session_id !== null) &&
                     <div>
-                        <button className={"btn " + (favorite ? "red" : "green")} onClick={() => onAddToList(!favorite)} style={{ fontSize: "0.7rem" }}>
+                        <button className={"btn " + (favorite ? "red" : "green")} onClick={() => onAddToList(!favorite)} style={{ fontSize: "0.6rem" }}>
                             <FontAwesomeIcon icon={favorite ? "minus-circle" : "plus-circle"} />&nbsp;
                             Избранное
                         </button>

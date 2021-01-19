@@ -4,15 +4,14 @@ import M from 'materialize-css'
 class MovieImage extends Component {
     constructor(props) {
         super(props);
-        this.imageRef = React.createRef();
+        // this.imageRef = React.createRef();
     }
 
-    componentDidMount() {
-        const options = {}
-
-        const image = this.imageRef.current;
-        // M.Tooltip.init(image, options);
-    }
+    // componentDidMount() {
+    // const options = {}
+    // const image = this.imageRef.current;
+    // M.Tooltip.init(image, options);
+    // }
 
     render() {
         const { moviedata, id } = this.props
@@ -22,11 +21,11 @@ class MovieImage extends Component {
             <img
                 data-position="bottom"
                 // data-tooltip={moviedata.block_title + ':<br/>"' + moviedata.title + '"'}
-                ref={this.imageRef}
+                // ref={this.imageRef}
                 src={poster_path}
                 data-target={"modal" + id}
-                className="modal-trigger hoverable"
-                style={{ width: "auto", border: "1px solid #cecece", borderRadius: "5px", maxHeight: "350px" }} />
+                className="modal-trigger movieimage"
+            />
         );
     }
 
